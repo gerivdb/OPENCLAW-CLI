@@ -1,0 +1,58 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "openclaw-cli"
+version = "0.1.0"
+description = "🦞 OpenClaw CLI - Command-line interface for L1 semantic normalization"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "ECOS Team", email = "dev@ecosystem-1.com"}
+]
+keywords = ["openclaw", "cli", "intent", "normalization", "ecos"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "openclaw @ git+ssh://git@github.com/gerivdb/OPENCLAW.git@main",
+    "typer[all]>=0.12",
+    "rich>=13.7",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.1",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.3",
+    "mypy>=1.9",
+]
+
+[project.scripts]
+openclaw = "openclaw_cli.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/gerivdb/OPENCLAW-CLI"
+Repository = "https://github.com/gerivdb/OPENCLAW-CLI"
+Issues = "https://github.com/gerivdb/OPENCLAW-CLI/issues"
+Documentation = "https://github.com/gerivdb/OPENCLAW-CLI/blob/main/README.md"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
